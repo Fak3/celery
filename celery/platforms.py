@@ -360,7 +360,7 @@ def detached(logfile=None, pidfile=None, uid=None, gid=None, umask=0,
     def after_chdir_do():
         # Since without stderr any errors will be silently suppressed,
         # we need to know that we have access to the logfile.
-        logfile and open(logfile, 'a').close()
+        logfile and open(logfile, 'a+').close()
         # Doesn't actually create the pidfile, but makes sure it's not stale.
         if pidfile:
             _create_pidlock(pidfile).release()
